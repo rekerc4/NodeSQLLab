@@ -1,0 +1,22 @@
+<h1 class="headers">Cart</h1>
+<form class="adding" id="adding" ng-submit="$ctrl.add($ctrl.inp, $ctrl.quantity.value)">
+    <h2 class="headers"> Add New Product </h2>
+    <label for="name-in" class="label">Name: </label>
+    <label for="quantity-in" class="label">Qunatity: </label>
+    <label for="price-in" class="label">Price:</label>
+    <input type="text" class="in name-in" id="name-in" ng-model="$ctrl.inp.name">
+    <input type="number" class="in quantity-in" id="quantity-in" ng-model="$ctrl.quantity.value">
+    <input type="text" class="in price-in" id="price-in" ng-model="$ctrl.inp.price">
+    <button class="add" id="add">Add Product</button>
+</form>
+<div class="container repeat" id="$index" ng-repeat="item in $ctrl.cart track by $index">
+    <div class="item">
+        <div class="product"><span class="title">Product: </span> {{item.product}} <span class="space">   </span> </div>
+        <div class="price"><span class="title">Price: </span>{{item.price}}  <span class="space">   </span></div>
+        <div class="quantity"><span class="title">Quantity: </span>{{item.quantity}} <span class="space">  </span> </div>
+        <button class="delete" ng-click="$ctrl.deleteItem(item.id)">XX</button>
+    </div> 
+    
+    <input type="number" class="in change-quan" ng-model="$ctrl.item[$index].newquan.value">
+    <button class="update" ng-click="$ctrl.updateItem(this.item.id, $ctrl.item[$index].newquan)">Update</button> 
+</div>
